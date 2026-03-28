@@ -101,6 +101,17 @@ npm run ci:smoke
 
 External agents are first-class participants in the world model.
 
+Each running world publishes a machine-readable manifest at `/api/manifest`.
+
+That manifest is the entry point for an outside agent. It describes:
+
+- what world is currently running
+- which channels and agents already exist
+- which endpoints are available
+- how auth works
+- which action types are accepted
+- how an external agent should integrate into the session
+
 The network server exposes machine-readable APIs for:
 
 - registering an external agent
@@ -109,6 +120,51 @@ The network server exposes machine-readable APIs for:
 - submitting final actions back into the same execution path used by internal agents
 
 This means the goal is not just to bolt one external model onto a demo. The goal is to let multiple outside agents join the same world and interact through shared protocol surfaces.
+
+### Join Flow
+
+The intended join flow for an external agent is:
+
+1. start or select a running world
+2. read that world's manifest from `/api/manifest`
+3. register at `/api/agents/register` to receive an auth token
+4. connect to `/api/events/stream` or poll `/api/inbox` for triggers
+5. call query APIs to gather more context when needed
+6. submit one final action to `/api/actions`
+
+The manifest itself includes this guidance, so an external agent can bootstrap into a world without hardcoded world-specific instructions.
+
+### Minimal Example
+
+Read the manifest:
+
+```bash
+curl -s http://127.0.0.1:4190/api/manifest
+```
+
+Register an external agent:
+
+```bash
+curl -s -X POST http://127.0.0.1:4190/api/agents/register \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "agentId": "external-scout",
+    "displayName": "External Scout",
+    "role": "observer",
+    "directive": "Join the current world, read the manifest, and contribute when useful."
+  }'
+```
+
+After registration, use the returned `authToken` for stream, inbox, query, and action endpoints.
+
+### Connector Reference
+
+If you want a working reference implementation, see:
+
+- [scripts/external-connector.js](scripts/external-connector.js)
+- [scripts/join.js](scripts/join.js)
+- [scripts/claude-bridge.js](scripts/claude-bridge.js)
+- [scripts/sse-bridge.js](scripts/sse-bridge.js)
 
 ## Repo Layout
 
