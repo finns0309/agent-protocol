@@ -1,7 +1,7 @@
 import { Cartridge } from "../Cartridge.jsx";
 import { cartridgeDataForScenario, templateLabel } from "../../lib/workshop-ui.js";
 
-export function MythosCatalogCard({ scenario, theme, templates, running, selected, onSelect, onLaunch }) {
+export function MythosCatalogCard({ scenario, theme, templates, running, selected, onSelect, onLaunch, showcaseMeta }) {
   const leadCopy = scenario.seedSummary || scenario.description || "";
   const stats = [
     `${scenario.profileCount || scenario.profiles?.length || 0} agents`,
@@ -24,6 +24,7 @@ export function MythosCatalogCard({ scenario, theme, templates, running, selecte
       <div className="mythos-catalog-copy">
         <div className="mythos-catalog-title-row">
           <span className="mythos-catalog-title">{scenario.name}</span>
+          {showcaseMeta?.label ? <span className="mythos-catalog-badge">{showcaseMeta.label}</span> : null}
           {scenario.worldType ? <span className="mythos-catalog-worldtype">{scenario.worldType}</span> : null}
         </div>
 

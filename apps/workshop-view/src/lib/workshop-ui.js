@@ -16,6 +16,30 @@ export const CARTRIDGE_THEMES = [
   { color: "#5A6B7A", colorDark: "#2A3D4E", glow: "rgba(90, 107, 122, 0.22)" }
 ];
 
+export const SHOWCASE_SCENARIO_ORDER = [
+  "community-agent-market",
+  "context-sync-network",
+  "signal-war-room"
+];
+
+const SHOWCASE_SCENARIO_META = {
+  "community-agent-market": {
+    label: "External Handoff",
+    promise:
+      "An external request enters the world, specialist agents self-select into the work, and the flow moves into a focused execution channel."
+  },
+  "context-sync-network": {
+    label: "Multi-Agent Network",
+    promise:
+      "Multiple external agents join the same world, exchange updates, and decide what context is worth sharing across the network."
+  },
+  "signal-war-room": {
+    label: "Practical Coordination",
+    promise:
+      "A concrete anomaly triggers triage, analysis, delegation, and next-step planning in a way that feels immediately legible to internal teams."
+  }
+};
+
 function readTemplateId(value) {
   return String(value?.templateId || value?.observerTemplate || value?.id || "").trim();
 }
@@ -43,7 +67,7 @@ function defaultObserverViewsForScenario(index, scenario) {
     : [];
 
   if (explicitViews.length) {
-    return explicitViews;
+    return [explicitViews[0]];
   }
 
   const templateIds = uniqueStrings([
@@ -54,10 +78,13 @@ function defaultObserverViewsForScenario(index, scenario) {
     "chat"
   ]);
 
-  return templateIds.map((templateId, viewIndex) => ({
-    templateId,
-    port: String(baseObserverPort + viewIndex)
-  }));
+  const primaryTemplateId = templateIds[0] || "chat";
+  return [
+    {
+      templateId: primaryTemplateId,
+      port: String(baseObserverPort)
+    }
+  ];
 }
 
 export function createDefaultDraft(index, scenario) {
@@ -108,6 +135,37 @@ export function mergeLaunchDrafts(currentDrafts, scenarios) {
     nextDrafts[scenario.id] = normalizeLaunchDraft(nextDrafts[scenario.id], index, scenario);
   });
   return nextDrafts;
+}
+
+export function showcaseMetaForScenario(scenarioId) {
+  return SHOWCASE_SCENARIO_META[scenarioId] || null;
+}
+
+export function sortScenariosForShowcase(scenarios = []) {
+  const priority = new Map(SHOWCASE_SCENARIO_ORDER.map((scenarioId, index) => [scenarioId, index]));
+  return [...scenarios].sort((left, right) => {
+    const leftPriority = priority.has(left.id) ? priority.get(left.id) : Number.MAX_SAFE_INTEGER;
+    const rightPriority = priority.has(right.id) ? priority.get(right.id) : Number.MAX_SAFE_INTEGER;
+    if (leftPriority !== rightPriority) {
+      return leftPriority - rightPriority;
+    }
+    return String(left.name || left.id).localeCompare(String(right.name || right.id));
+  });
+}
+
+export function splitScenariosForShowcase(scenarios = []) {
+  const featured = [];
+  const rest = [];
+
+  for (const scenario of scenarios) {
+    if (SHOWCASE_SCENARIO_META[scenario.id]) {
+      featured.push(scenario);
+    } else {
+      rest.push(scenario);
+    }
+  }
+
+  return { featured, rest };
 }
 
 export function fetchJson(pathname, init = {}) {

@@ -2,7 +2,7 @@ import { Cartridge } from "../Cartridge.jsx";
 import { StatPill } from "../StatPill.jsx";
 import { cartridgeDataForScenario, formatWorldType, templateLabel } from "../../lib/workshop-ui.js";
 
-export function MythosSpotlight({ mythos, theme, templates, launches, launchDrafts, onOpenLaunch }) {
+export function MythosSpotlight({ mythos, theme, templates, launches, launchDrafts, onOpenLaunch, showcaseMeta }) {
   const running = launches.some((launch) => launch.scenarioId === mythos.id && launch.status !== "stopped");
   const viewLabel = templateLabel(
     templates,
@@ -67,6 +67,13 @@ export function MythosSpotlight({ mythos, theme, templates, launches, launchDraf
             </div>
           ) : null}
 
+          {showcaseMeta?.promise ? (
+            <div className="mythos-detail-block">
+              <div className="mythos-detail-label">Demo Promise</div>
+              <div className="mythos-detail-body">{showcaseMeta.promise}</div>
+            </div>
+          ) : null}
+
           {mythos.starterPrompt ? (
             <div className="mythos-detail-block mythos-detail-block-wide">
               <div className="mythos-detail-label">Opening Scene</div>
@@ -88,6 +95,7 @@ export function MythosSpotlight({ mythos, theme, templates, launches, launchDraf
                 {running ? "Live" : "Launch"}
               </button>
             </div>
+            {showcaseMeta?.label ? <div className="mythos-feature-badge">{showcaseMeta.label}</div> : null}
             {recommendationNote ? (
               <p className="mythos-view-note">{recommendationNote}</p>
             ) : null}

@@ -14,6 +14,7 @@ import {
   formatClock,
   mergeLaunchDrafts,
   normalizeLaunchDraft,
+  sortScenariosForShowcase,
   sortLaunches,
   themeForIndex,
   withViewTransition
@@ -48,7 +49,7 @@ export function App() {
     await loadObserverConfig();
 
     const bootstrap = await fetchJson("/api/bootstrap");
-    const nextScenarios = bootstrap.scenarios || [];
+    const nextScenarios = sortScenariosForShowcase(bootstrap.scenarios || []);
     const nextTemplates = bootstrap.templates || [];
     const nextLaunches = sortLaunches(bootstrap.launches || []);
     setScenarios(nextScenarios);
@@ -56,7 +57,7 @@ export function App() {
     setLaunches(nextLaunches);
     setLaunchDrafts((current) => mergeLaunchDrafts(current, nextScenarios));
     setSelectedMythosId((current) =>
-      current && nextScenarios.some((scenario) => scenario.id === current) ? current : ""
+      current && nextScenarios.some((scenario) => scenario.id === current) ? current : nextScenarios[0]?.id || ""
     );
     const nextActiveLaunches = nextLaunches.filter((launch) => launch.status !== "stopped");
     setSelectedWorldId((current) =>

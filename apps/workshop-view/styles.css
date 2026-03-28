@@ -2682,6 +2682,21 @@ body {
   min-width: 220px;
 }
 
+.mythos-feature-badge {
+  margin-top: 10px;
+  margin-left: auto;
+  width: fit-content;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(94, 71, 49, 0.14);
+  background: rgba(247, 238, 223, 0.9);
+  color: rgba(88, 64, 40, 0.9);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
 .mythos-command-actions .mythos-action-row {
   justify-content: flex-end;
   margin-top: 0;
@@ -2816,6 +2831,10 @@ body {
 }
 
 @media (max-width: 1180px) {
+  .mythos-showcase-grid {
+    grid-template-columns: 1fr;
+  }
+
   .mythos-stage {
     grid-template-columns: 1fr;
     overflow-y: auto;
@@ -2844,6 +2863,11 @@ body {
 }
 
 @media (max-width: 820px) {
+  .mythos-catalog-list,
+  .mythos-catalog-list-secondary {
+    grid-template-columns: 1fr;
+  }
+
   .mythos-hero-strip {
     grid-template-columns: 1fr;
   }
@@ -3136,6 +3160,31 @@ body {
   margin-bottom: 14px;
 }
 
+.mythos-library-section + .mythos-library-section {
+  margin-top: 24px;
+  padding-top: 22px;
+  border-top: 1px solid rgba(31, 26, 23, 0.08);
+}
+
+.mythos-library-section-head {
+  margin-bottom: 12px;
+}
+
+.mythos-library-section-title {
+  color: #2d1e12;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.mythos-library-section-copy {
+  margin-top: 6px;
+  color: rgba(72, 55, 39, 0.74);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
 .mythos-library-kicker {
   color: #9a9084;
   letter-spacing: 0.12em;
@@ -3376,6 +3425,19 @@ body {
   margin: 0;
 }
 
+.screen-mythos-prototype .focus-copy-compact {
+  max-width: 760px;
+  color: #8f8579;
+}
+
+.mythos-showcase-grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(420px, 0.92fr);
+  gap: 28px;
+  align-items: stretch;
+}
+
 .mythos-carousel {
   display: flex;
   align-items: center;
@@ -3445,6 +3507,10 @@ body {
   margin-top: 8px;
 }
 
+.mythos-catalog-list-secondary {
+  grid-template-columns: 1fr;
+}
+
 .mythos-catalog-card {
   display: flex;
   align-items: flex-start;
@@ -3490,6 +3556,17 @@ body {
   line-height: 1.2;
   font-weight: 700;
   color: #1a1a1a;
+}
+
+.mythos-catalog-badge {
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: rgba(241, 227, 205, 0.8);
+  color: rgba(83, 60, 36, 0.9);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .mythos-catalog-worldtype {

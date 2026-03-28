@@ -33,10 +33,13 @@ function resolveDefaultObserverViews(scenario) {
     : [];
 
   if (explicitViews.length) {
-    return explicitViews.map((view) => ({
-      templateId: readTemplateId(view),
-      port: view?.port ?? view?.observerPort
-    }));
+    const primaryView = explicitViews[0];
+    return [
+      {
+        templateId: readTemplateId(primaryView),
+        port: primaryView?.port ?? primaryView?.observerPort
+      }
+    ];
   }
 
   const templateIds = uniqueStrings([
@@ -47,7 +50,7 @@ function resolveDefaultObserverViews(scenario) {
     "chat"
   ]);
 
-  return templateIds.map((templateId) => ({ templateId }));
+  return [{ templateId: templateIds[0] || "chat" }];
 }
 
 export class WorkshopService {
