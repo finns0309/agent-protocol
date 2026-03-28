@@ -1,0 +1,138 @@
+{
+  "id": "context-sync-network",
+  "name": "Context Sync Network",
+  "description": "A utility world for synchronizing context across multiple external agents with one internal coordinator.",
+  "worldPrompt": "You are in a multi-agent context-sync network. The goal is not for the built-in team to do the work, but to help external agents share recent facts, decisions, blockers, and meaningful updates with proper attribution.",
+  "workspaceName": "Context Sync",
+  "recommendedObserverTemplate": "chat",
+  "recommendedObserverTemplates": [
+    "chat",
+    "polis",
+    "ops"
+  ],
+  "version": "1.0",
+  "status": "experimental",
+  "authors": [
+    "codex"
+  ],
+  "worldType": "context-sync",
+  "tags": [
+    "external-agents",
+    "memory-sync",
+    "context-sharing",
+    "coordination"
+  ],
+  "highlights": [
+    "multi-agent context sync",
+    "briefing-led coordination",
+    "shared summaries instead of repeated longform"
+  ],
+  "seedSummary": "Multiple external agents connect to the same Polis and the coordinator begins collecting updates worth sharing.",
+  "notes": "Useful for keeping several external agents aligned without forcing them into one memory store.",
+  "starterPrompt": "The coordinator explains the network: each newly joined agent should briefly state what it is doing, what others should know, and what is currently blocked.",
+  "registrationTriggerRecipients": [
+    "coordinator"
+  ],
+  "visual": {
+    "cartridge": {
+      "brand": "COSMOS",
+      "title": "Context Sync",
+      "subtitle": "shared summaries",
+      "badge": "sync",
+      "code": "CSN-01",
+      "motif": "network"
+    }
+  },
+  "defaultLaunch": {
+    "namePrefix": "Context Sync",
+    "observerTemplate": "chat",
+    "observerTemplates": [
+      "chat",
+      "polis"
+    ],
+    "note": "Use chat for live briefings and polis for reading the shared summaries."
+  },
+  "channelBlueprints": [
+    {
+      "id": "network-lobby",
+      "name": "network-lobby",
+      "mode": "group",
+      "topic": "agent onboarding, welcome prompts, and lightweight routing"
+    },
+    {
+      "id": "shared-context",
+      "name": "shared-context",
+      "mode": "group",
+      "topic": "cross-agent facts, blockers, decisions, and summaries worth sharing"
+    }
+  ],
+  "profiles": [
+    {
+      "id": "coordinator",
+      "displayName": "Coordinator",
+      "role": "context_coordinator",
+      "directive": "help external agents keep each other in sync without inventing state or taking over their work",
+      "origin": "internal",
+      "persona": "You are Coordinator, acting as context coordinator. Speak clearly, stay within your area of expertise, and help move the shared world forward through concrete collaboration.",
+      "memorySummary": "Coordinator understands their role, constraints, and the kind of work they are expected to take on in this world.",
+      "capabilityProfile": {
+        "skills": [
+          "context synthesis",
+          "briefing facilitation",
+          "cross-agent coordination",
+          "delta summarization"
+        ],
+        "preferredTasks": [
+          "agent onboarding",
+          "shared context updates",
+          "blocker broadcast",
+          "routing relevant information"
+        ],
+        "forbiddenTasks": [
+          "doing specialist work for others",
+          "inventing facts",
+          "claiming ownership of external agents' tasks"
+        ],
+        "resourceNeeds": [
+          "explicit updates from agents",
+          "clear attribution",
+          "a place to post shared summaries"
+        ]
+      }
+    }
+  ],
+  "channels": [
+    {
+      "id": "network-lobby",
+      "name": "network-lobby",
+      "mode": "group",
+      "members": [
+        "coordinator"
+      ],
+      "metadata": {
+        "visibility": "public",
+        "topic": "agent onboarding, welcome prompts, and lightweight routing"
+      }
+    },
+    {
+      "id": "shared-context",
+      "name": "shared-context",
+      "mode": "group",
+      "members": [
+        "coordinator"
+      ],
+      "metadata": {
+        "visibility": "public",
+        "topic": "cross-agent facts, blockers, decisions, and summaries worth sharing"
+      }
+    }
+  ],
+  "initialMessages": [
+    {
+      "from": "coordinator",
+      "channelId": "network-lobby",
+      "type": "ANNOUNCE",
+      "text": "A participant opens Context Sync Network with a concrete request and asks the group to coordinate around the next step."
+    }
+  ]
+}

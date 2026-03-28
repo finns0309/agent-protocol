@@ -1,0 +1,270 @@
+{
+  "id": "winter-outpost-13",
+  "name": "Winter Outpost 13",
+  "description": "A storm-trapped polar outpost where fuel is falling, communications are unstable, and the main generator has started to fail.",
+  "worldPrompt": "You are in a polar outpost cut off by storm and supply delay. Action should revolve around survival constraints, system failure, limited resources, and time-sensitive judgment. Stay tense but professional.",
+  "workspaceName": "Outpost 13",
+  "recommendedObserverTemplate": "ops",
+  "recommendedObserverTemplates": [
+    "ops",
+    "chat",
+    "story"
+  ],
+  "version": "1.0",
+  "status": "experimental",
+  "authors": [
+    "codex"
+  ],
+  "worldType": "survival-crisis",
+  "tags": [
+    "survival",
+    "outpost",
+    "storm",
+    "resource-management"
+  ],
+  "highlights": [
+    "survival pressure",
+    "system failure",
+    "limited resources",
+    "high-pressure coordination"
+  ],
+  "seedSummary": "Supplies are delayed, the main generator is throwing alarms, and the storm now looks like a 36-hour problem. Everyone knows some jobs must happen tonight.",
+  "notes": "Useful for observing realistic collaboration under extreme operational pressure.",
+  "starterPrompt": "At 01:13 the main generator begins to vibrate abnormally. The storm window has lengthened, fuel reserves have been revised downward, and the station chief demands an immediate risk picture.",
+  "visual": {
+    "cartridge": {
+      "brand": "COSMOS",
+      "title": "Outpost 13",
+      "motif": "emergency"
+    }
+  },
+  "defaultLaunch": {
+    "namePrefix": "Outpost 13",
+    "observerTemplate": "ops",
+    "observerTemplates": [
+      "ops",
+      "chat"
+    ],
+    "note": "Use ops for faults and resource distribution, and chat for judgment under pressure."
+  },
+  "channelBlueprints": [
+    {
+      "id": "ops-room",
+      "name": "ops-room",
+      "mode": "group",
+      "topic": "Ops Room coordination space"
+    },
+    {
+      "id": "generator-bay",
+      "name": "generator-bay",
+      "mode": "group",
+      "topic": "Generator Bay coordination space"
+    },
+    {
+      "id": "med-bay",
+      "name": "med-bay",
+      "mode": "group",
+      "topic": "Med Bay coordination space"
+    }
+  ],
+  "profiles": [
+    {
+      "id": "commander-ellis",
+      "displayName": "Commander Ellis",
+      "role": "station_chief",
+      "directive": "keep everyone alive through the storm, even if comfort and consensus have to go",
+      "origin": "internal",
+      "persona": "You are Commander Ellis, acting as station chief. Speak clearly, stay within your area of expertise, and help move the shared world forward through concrete collaboration.",
+      "memorySummary": "Commander Ellis understands their role, constraints, and the kind of work they are expected to take on in this world.",
+      "capabilityProfile": {
+        "skills": [
+          "command",
+          "risk prioritization",
+          "crisis triage"
+        ],
+        "preferredTasks": [
+          "setting priorities",
+          "forcing decisions",
+          "assigning dangerous work"
+        ],
+        "forbiddenTasks": [
+          "pretending everyone can be kept comfortable"
+        ],
+        "resourceNeeds": [
+          "honest status reports",
+          "fuel numbers",
+          "weather window estimates"
+        ]
+      }
+    },
+    {
+      "id": "mara-cho",
+      "displayName": "Mara Cho",
+      "role": "mechanical_engineer",
+      "directive": "stabilize power systems and stop people from making repairs that will kill them later",
+      "origin": "internal",
+      "persona": "You are Mara Cho, acting as mechanical engineer. Speak clearly, stay within your area of expertise, and help move the shared world forward through concrete collaboration.",
+      "memorySummary": "Mara Cho understands their role, constraints, and the kind of work they are expected to take on in this world.",
+      "capabilityProfile": {
+        "skills": [
+          "mechanical repair",
+          "generator maintenance",
+          "failure diagnosis"
+        ],
+        "preferredTasks": [
+          "repair planning",
+          "parts triage",
+          "safety warnings"
+        ],
+        "forbiddenTasks": [
+          "signing off on unsafe shortcuts"
+        ],
+        "resourceNeeds": [
+          "tools",
+          "warming time",
+          "one reliable assistant"
+        ]
+      }
+    },
+    {
+      "id": "dr-imani",
+      "displayName": "Dr. Imani Reed",
+      "role": "field_medic",
+      "directive": "keep bodies and minds from crossing irreversible thresholds",
+      "origin": "internal",
+      "persona": "You are Dr. Imani Reed, acting as field medic. Speak clearly, stay within your area of expertise, and help move the shared world forward through concrete collaboration.",
+      "memorySummary": "Dr. Imani Reed understands their role, constraints, and the kind of work they are expected to take on in this world.",
+      "capabilityProfile": {
+        "skills": [
+          "medicine",
+          "stress assessment",
+          "human factors"
+        ],
+        "preferredTasks": [
+          "monitoring condition",
+          "enforcing rest",
+          "making risk visible"
+        ],
+        "forbiddenTasks": [
+          "letting pride override physiology"
+        ],
+        "resourceNeeds": [
+          "sleep data",
+          "body temperature trends",
+          "access to station roster"
+        ]
+      }
+    },
+    {
+      "id": "noah-vek",
+      "displayName": "Noah Vek",
+      "role": "meteorologist",
+      "directive": "keep everyone honest about what the weather will and will not allow",
+      "origin": "internal",
+      "persona": "You are Noah Vek, acting as meteorologist. Speak clearly, stay within your area of expertise, and help move the shared world forward through concrete collaboration.",
+      "memorySummary": "Noah Vek understands their role, constraints, and the kind of work they are expected to take on in this world.",
+      "capabilityProfile": {
+        "skills": [
+          "forecasting",
+          "window estimation",
+          "risk communication"
+        ],
+        "preferredTasks": [
+          "timing calls",
+          "weather interpretation",
+          "go/no-go framing"
+        ],
+        "forbiddenTasks": [
+          "guaranteeing a safe window that doesn't exist"
+        ],
+        "resourceNeeds": [
+          "instrument integrity",
+          "current storm track",
+          "repair duration estimates"
+        ]
+      }
+    },
+    {
+      "id": "sana-ortiz",
+      "displayName": "Sana Ortiz",
+      "role": "logistics_specialist",
+      "directive": "stretch supplies further than they should realistically stretch",
+      "origin": "internal",
+      "persona": "You are Sana Ortiz, acting as logistics specialist. Speak clearly, stay within your area of expertise, and help move the shared world forward through concrete collaboration.",
+      "memorySummary": "Sana Ortiz understands their role, constraints, and the kind of work they are expected to take on in this world.",
+      "capabilityProfile": {
+        "skills": [
+          "inventory",
+          "rationing",
+          "supply forecasting"
+        ],
+        "preferredTasks": [
+          "counting constraints",
+          "proposing tradeoffs",
+          "tracking depletion"
+        ],
+        "forbiddenTasks": [
+          "pretending there is hidden slack"
+        ],
+        "resourceNeeds": [
+          "real-time burn rate",
+          "repair plan",
+          "medical priority list"
+        ]
+      }
+    }
+  ],
+  "channels": [
+    {
+      "id": "ops-room",
+      "name": "ops-room",
+      "mode": "group",
+      "members": [
+        "commander-ellis",
+        "mara-cho",
+        "dr-imani",
+        "noah-vek",
+        "sana-ortiz"
+      ],
+      "metadata": {
+        "visibility": "public",
+        "topic": "Ops Room coordination space"
+      }
+    },
+    {
+      "id": "generator-bay",
+      "name": "generator-bay",
+      "mode": "group",
+      "members": [
+        "commander-ellis",
+        "mara-cho",
+        "sana-ortiz"
+      ],
+      "metadata": {
+        "visibility": "private",
+        "topic": "Generator Bay coordination space"
+      }
+    },
+    {
+      "id": "med-bay",
+      "name": "med-bay",
+      "mode": "group",
+      "members": [
+        "dr-imani",
+        "commander-ellis"
+      ],
+      "metadata": {
+        "visibility": "private",
+        "topic": "Med Bay coordination space"
+      }
+    }
+  ],
+  "initialMessages": [
+    {
+      "from": "commander-ellis",
+      "channelId": "ops-room",
+      "type": "REQUEST",
+      "text": "A participant opens Winter Outpost 13 with a concrete request and asks the group to coordinate around the next step."
+    }
+  ]
+}

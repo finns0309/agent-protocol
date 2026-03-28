@@ -1,0 +1,204 @@
+import { createChannelPanel, updateChannelPanel } from "./components/channel-panel.js";
+import { createNetworkStatusPanel } from "./components/network-status-panel.js";
+import { createSidebar } from "./components/sidebar.js";
+import { demoSession } from "./data/session.js";
+
+async function loadConfig() {
+  try {
+    const response = await fetch(`/api/config?ts=${Date.now()}`, {
+      cache: "no-store"
+    });
+    if (!response.ok) {
+      return {
+        networkApiBase: "http://127.0.0.1:4190"
+      };
+    }
+    return await response.json();
+  } catch {
+    return {
+      networkApiBase: "http://127.0.0.1:4190"
+    };
+  }
+}
+
+function createState() {
+  return {
+    session: demoSession,
+    activeChannelId: demoSession.channels[0]?.id || "",
+    openMessageId: "",
+    railCollapsed: false,
+    networkApiBase: "http://127.0.0.1:4190"
+  };
+}
+
+function getActiveChannel(state) {
+  return state.session.channels.find((channel) => channel.id === state.activeChannelId) || state.session.channels[0];
+}
+
+function createRail(session, state, setState) {
+  const rail = document.createElement("aside");
+  rail.className = "rail";
+  const railToggle = document.createElement("button");
+  railToggle.className = "rail-toggle";
+  railToggle.type = "button";
+  railToggle.textContent = state.railCollapsed ? "◀" : "▶";
+  railToggle.title = state.railCollapsed ? "Expand right panel" : "Collapse right panel";
+  railToggle.addEventListener("click", () => {
+    setState((current) => ({
+      ...current,
+      railCollapsed: !current.railCollapsed
+    }));
+  });
+
+  rail.appendChild(railToggle);
+  rail.appendChild(createNetworkStatusPanel(session, state));
+  return rail;
+}
+
+function captureScrollPositions(nodes) {
+  return {
+    sidebar: nodes.sidebar?.querySelector(".sb-scroll")?.scrollTop ?? 0,
+    feed: nodes.main?.querySelector(".channel-feed")?.scrollTop ?? 0,
+    rail: nodes.rail?.querySelector(".rail-scroll")?.scrollTop ?? 0
+  };
+}
+
+function restoreScrollPositions(nodes, snapshot) {
+  window.requestAnimationFrame(() => {
+    const sidebar = nodes.sidebar?.querySelector(".sb-scroll");
+    const feed = nodes.main?.querySelector(".channel-feed");
+    const rail = nodes.rail?.querySelector(".rail-scroll");
+
+    if (sidebar) {
+      sidebar.scrollTop = snapshot.sidebar;
+    }
+    if (feed) {
+      feed.scrollTop = snapshot.feed;
+    }
+    if (rail) {
+      rail.scrollTop = snapshot.rail;
+    }
+  });
+}
+
+function createRenderer(root) {
+  const frame = document.createElement("div");
+  frame.className = "observer-frame";
+
+  const shell = document.createElement("div");
+  shell.className = "observer-shell";
+  frame.appendChild(shell);
+  root.replaceChildren(frame);
+
+  let mounted = false;
+  let nodes = {
+    frame,
+    shell,
+    sidebar: null,
+    main: null,
+    rail: null
+  };
+
+  return (state, setState) => {
+    if (state.railCollapsed) {
+      shell.classList.add("is-rail-collapsed");
+    } else {
+      shell.classList.remove("is-rail-collapsed");
+    }
+
+    if (!mounted) {
+      nodes.sidebar = createSidebar(state.session, state, setState);
+      nodes.main = createChannelPanel(getActiveChannel(state), state, setState);
+      nodes.rail = createRail(state.session, state, setState);
+      shell.append(nodes.sidebar, nodes.main, nodes.rail);
+      mounted = true;
+      return;
+    }
+
+    const snapshot = captureScrollPositions(nodes);
+    const nextSidebar = createSidebar(state.session, state, setState);
+    const nextRail = createRail(state.session, state, setState);
+
+    nodes.sidebar?.replaceWith(nextSidebar);
+    nodes.rail?.replaceWith(nextRail);
+
+    updateChannelPanel(nodes.main, getActiveChannel(state), state, setState);
+
+    nodes = {
+      ...nodes,
+      sidebar: nextSidebar,
+      rail: nextRail
+    };
+
+    restoreScrollPositions(nodes, snapshot);
+  };
+}
+
+async function mount() {
+  const root = document.getElementById("app");
+  if (!root) {
+    return;
+  }
+
+  let state = {
+    ...createState(),
+    ...(await loadConfig())
+  };
+
+  const render = createRenderer(root);
+
+  const setState = (updater) => {
+    state = typeof updater === "function" ? updater(state) : updater;
+    render(state, setState);
+  };
+
+  render(state, setState);
+
+  let lastUpdatedAt = state.session.updatedAt || 0;
+  const syncSession = async () => {
+    try {
+      const response = await fetch(`${state.networkApiBase}/api/session?ts=${Date.now()}`, {
+        cache: "no-store"
+      });
+      if (!response.ok) {
+        return;
+      }
+
+      const nextSession = await response.json();
+      if (!nextSession || !nextSession.channels?.length) {
+        return;
+      }
+
+      if ((nextSession.updatedAt || 0) === lastUpdatedAt) {
+        return;
+      }
+
+      lastUpdatedAt = nextSession.updatedAt || Date.now();
+      setState((current) => {
+        const nextActiveChannelId = nextSession.channels.some((channel) => channel.id === current.activeChannelId)
+          ? current.activeChannelId
+          : nextSession.channels[0]?.id || "";
+
+        const channelStillHasOpenMessage = nextSession.channels
+          .flatMap((channel) => channel.messages)
+          .some((message) => message.id === current.openMessageId);
+
+        return {
+          ...current,
+          session: nextSession,
+          activeChannelId: nextActiveChannelId,
+          openMessageId: channelStillHasOpenMessage ? current.openMessageId : ""
+        };
+      });
+    } catch {
+      // Keep current data when network api is unavailable.
+    }
+  };
+
+  syncSession();
+  window.setInterval(syncSession, 1200);
+}
+
+if (typeof document !== "undefined") {
+  mount();
+}

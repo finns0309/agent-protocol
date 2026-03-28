@@ -1,0 +1,13 @@
+{
+  "name": "@agent-protocol/runtime",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.js",
+    "./llm/adapter": "./src/llm/adapter.js",
+    "./llm/anthropic-compatible": "./src/llm/anthropic-compatible.js",
+    "./llm/minimax": "./src/llm/minimax.js",
+    "./llm/mock": "./src/llm/mock.js"
+  }
+}

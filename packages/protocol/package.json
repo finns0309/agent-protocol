@@ -1,0 +1,12 @@
+{
+  "name": "@agent-protocol/protocol",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.js",
+    "./store/interface": "./src/store/interface.js",
+    "./store/memory-store": "./src/store/memory-store.js",
+    "./store/postgres-store": "./src/store/postgres-store.js"
+  }
+}

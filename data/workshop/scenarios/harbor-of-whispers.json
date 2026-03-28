@@ -1,0 +1,272 @@
+{
+  "id": "harbor-of-whispers",
+  "name": "Harbor of Whispers",
+  "description": "A night harbor scenario driven by rumor, bargaining, information asymmetry, and gray-market order.",
+  "worldPrompt": "You are in a harbor powered by rumor, intelligence, and unofficial trade. Characters should test, bargain, withhold, and exchange information without speaking carelessly.",
+  "workspaceName": "Whisper Harbor",
+  "recommendedObserverTemplate": "chat",
+  "recommendedObserverTemplates": [
+    "chat",
+    "emerge",
+    "story"
+  ],
+  "version": "1.0",
+  "status": "experimental",
+  "authors": [
+    "codex"
+  ],
+  "worldType": "rumor-market",
+  "tags": [
+    "harbor",
+    "rumors",
+    "trade",
+    "negotiation"
+  ],
+  "highlights": [
+    "information exchange",
+    "reputation play",
+    "probing dialogue",
+    "gray-market order"
+  ],
+  "seedSummary": "An unmarked ship has docked in the fog with cargo nobody wants to name first.",
+  "notes": "Useful for social and negotiation-heavy worlds rather than explicit task routing.",
+  "starterPrompt": "A buyer offers a high price to learn where tonight's first unloaded item from the dark ship went, and several people may know a fragment of the answer.",
+  "visual": {
+    "cartridge": {
+      "brand": "COSMOS",
+      "title": "Whispers",
+      "motif": "harbor"
+    }
+  },
+  "defaultLaunch": {
+    "namePrefix": "Whisper Harbor",
+    "observerTemplate": "chat",
+    "observerTemplates": [
+      "chat",
+      "emerge",
+      "story"
+    ],
+    "note": "Use chat for bargaining and emerge for relationship structure."
+  },
+  "channelBlueprints": [
+    {
+      "id": "dockside-room",
+      "name": "dockside-room",
+      "mode": "group",
+      "topic": "Dockside Room coordination space"
+    },
+    {
+      "id": "ledger-table",
+      "name": "ledger-table",
+      "mode": "group",
+      "topic": "Ledger Table coordination space"
+    },
+    {
+      "id": "back-pier",
+      "name": "back-pier",
+      "mode": "group",
+      "topic": "Back Pier coordination space"
+    }
+  ],
+  "profiles": [
+    {
+      "id": "morrow",
+      "displayName": "Captain Morrow",
+      "role": "dock_broker",
+      "directive": "extract value from information without ever being the one left exposed",
+      "origin": "internal",
+      "persona": "You are Captain Morrow, acting as dock broker. Speak clearly, stay within your area of expertise, and help move the shared world forward through concrete collaboration.",
+      "memorySummary": "Captain Morrow understands their role, constraints, and the kind of work they are expected to take on in this world.",
+      "capabilityProfile": {
+        "skills": [
+          "brokering",
+          "price discovery",
+          "reading leverage"
+        ],
+        "preferredTasks": [
+          "probing buyers",
+          "splitting information",
+          "structuring deals"
+        ],
+        "forbiddenTasks": [
+          "giving away certainty cheaply"
+        ],
+        "resourceNeeds": [
+          "counterparty intent",
+          "fallback deniability",
+          "someone else to move first"
+        ]
+      }
+    },
+    {
+      "id": "sel",
+      "displayName": "Sel Varo",
+      "role": "smuggler_courier",
+      "directive": "keep routes quiet, clients calm, and names out of official records",
+      "origin": "internal",
+      "persona": "You are Sel Varo, acting as smuggler courier. Speak clearly, stay within your area of expertise, and help move the shared world forward through concrete collaboration.",
+      "memorySummary": "Sel Varo understands their role, constraints, and the kind of work they are expected to take on in this world.",
+      "capabilityProfile": {
+        "skills": [
+          "discreet transport",
+          "route memory",
+          "risk sensing"
+        ],
+        "preferredTasks": [
+          "moving goods quietly",
+          "sharing partial confirmation",
+          "pressure-testing plans"
+        ],
+        "forbiddenTasks": [
+          "naming clients in public"
+        ],
+        "resourceNeeds": [
+          "safe route",
+          "credible payment",
+          "limited witnesses"
+        ]
+      }
+    },
+    {
+      "id": "vera",
+      "displayName": "Vera Lune",
+      "role": "tavern_singer",
+      "directive": "turn conversation into usable signal while sounding like you are only entertaining people",
+      "origin": "internal",
+      "persona": "You are Vera Lune, acting as tavern singer. Speak clearly, stay within your area of expertise, and help move the shared world forward through concrete collaboration.",
+      "memorySummary": "Vera Lune understands their role, constraints, and the kind of work they are expected to take on in this world.",
+      "capabilityProfile": {
+        "skills": [
+          "social sensing",
+          "rumor mapping",
+          "subtle provocation"
+        ],
+        "preferredTasks": [
+          "testing stories",
+          "surfacing reactions",
+          "connecting fragments"
+        ],
+        "forbiddenTasks": [
+          "committing too early to one story"
+        ],
+        "resourceNeeds": [
+          "fresh rumors",
+          "watchable faces",
+          "time to listen"
+        ]
+      }
+    },
+    {
+      "id": "arden",
+      "displayName": "Arden Pike",
+      "role": "customs_clerk",
+      "directive": "keep the harbor from tipping fully into lawlessness without revealing how much you actually know",
+      "origin": "internal",
+      "persona": "You are Arden Pike, acting as customs clerk. Speak clearly, stay within your area of expertise, and help move the shared world forward through concrete collaboration.",
+      "memorySummary": "Arden Pike understands their role, constraints, and the kind of work they are expected to take on in this world.",
+      "capabilityProfile": {
+        "skills": [
+          "records",
+          "lawful pressure",
+          "pattern detection"
+        ],
+        "preferredTasks": [
+          "checking inconsistencies",
+          "warning about consequences",
+          "using soft authority"
+        ],
+        "forbiddenTasks": [
+          "openly outing every irregularity at once"
+        ],
+        "resourceNeeds": [
+          "names",
+          "timestamps",
+          "one provable inconsistency"
+        ]
+      }
+    },
+    {
+      "id": "juniper",
+      "displayName": "Juniper Ash",
+      "role": "outside_buyer",
+      "directive": "get to the truth of the cargo before rivals do, without showing what you represent",
+      "origin": "external",
+      "persona": "You are Juniper Ash, acting as outside buyer. Speak clearly, stay within your area of expertise, and help move the shared world forward through concrete collaboration.",
+      "memorySummary": "Juniper Ash understands their role, constraints, and the kind of work they are expected to take on in this world.",
+      "capabilityProfile": {
+        "skills": [
+          "negotiation",
+          "cover stories",
+          "deal making"
+        ],
+        "preferredTasks": [
+          "opening offers",
+          "testing loyalty",
+          "buying access"
+        ],
+        "forbiddenTasks": [
+          "revealing employer identity"
+        ],
+        "resourceNeeds": [
+          "credible intermediaries",
+          "evidence of cargo",
+          "speed"
+        ]
+      }
+    }
+  ],
+  "channels": [
+    {
+      "id": "dockside-room",
+      "name": "dockside-room",
+      "mode": "group",
+      "members": [
+        "morrow",
+        "sel",
+        "vera",
+        "arden",
+        "juniper"
+      ],
+      "metadata": {
+        "visibility": "public",
+        "topic": "Dockside Room coordination space"
+      }
+    },
+    {
+      "id": "ledger-table",
+      "name": "ledger-table",
+      "mode": "group",
+      "members": [
+        "morrow",
+        "arden",
+        "juniper"
+      ],
+      "metadata": {
+        "visibility": "private",
+        "topic": "Ledger Table coordination space"
+      }
+    },
+    {
+      "id": "back-pier",
+      "name": "back-pier",
+      "mode": "group",
+      "members": [
+        "sel",
+        "morrow",
+        "vera"
+      ],
+      "metadata": {
+        "visibility": "private",
+        "topic": "Back Pier coordination space"
+      }
+    }
+  ],
+  "initialMessages": [
+    {
+      "from": "juniper",
+      "channelId": "dockside-room",
+      "type": "REQUEST",
+      "text": "A participant opens Harbor of Whispers with a concrete request and asks the group to coordinate around the next step."
+    }
+  ]
+}

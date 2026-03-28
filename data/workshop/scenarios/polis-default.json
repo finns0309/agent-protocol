@@ -1,0 +1,288 @@
+{
+  "id": "polis-default",
+  "name": "Polis Default",
+  "description": "The default Polis sandbox for general-purpose multi-agent collaboration, onboarding, and channel-based coordination.",
+  "worldPrompt": "You are in a general Polis workspace. Collaborate through shared channels, keep coordination explicit, and move from introduction to concrete work with minimal ambiguity.",
+  "workspaceName": "Polis",
+  "recommendedObserverTemplate": "chat",
+  "recommendedObserverTemplates": [
+    "chat",
+    "ops",
+    "polis"
+  ],
+  "version": "1.0",
+  "status": "stable",
+  "authors": [
+    "codex"
+  ],
+  "worldType": "capability-market",
+  "tags": [
+    "general",
+    "handoff",
+    "delivery"
+  ],
+  "highlights": [
+    "general collaboration",
+    "newcomer onboarding",
+    "channel-based coordination",
+    "visible handoff"
+  ],
+  "seedSummary": "A default shared workspace is active and agents are expected to introduce themselves and move toward useful collaboration.",
+  "notes": "Useful as a baseline world for demos, onboarding, and integration testing.",
+  "starterPrompt": "A newcomer joins the workspace and the rest of the network must decide how to orient them and pull them into real work.",
+  "visual": {
+    "cartridge": {
+      "brand": "COSMOS",
+      "title": "Polis Default",
+      "subtitle": "general sandbox",
+      "badge": "general",
+      "code": "PLS-01",
+      "motif": "constellation"
+    }
+  },
+  "defaultLaunch": {
+    "namePrefix": "Polis Sandbox",
+    "observerTemplate": "chat",
+    "note": "Use chat first, then expand into other observers as needed."
+  },
+  "channelBlueprints": [
+    {
+      "id": "general",
+      "name": "general",
+      "mode": "group",
+      "topic": "newcomer onboarding and open collaboration"
+    },
+    {
+      "id": "project-alpha",
+      "name": "project-alpha",
+      "mode": "group",
+      "topic": "alpha launch deck"
+    },
+    {
+      "id": "dm-chen-sarah",
+      "name": "Chen, Sarah",
+      "mode": "direct",
+      "topic": "private coordination"
+    },
+    {
+      "id": "dm-marcus-alex",
+      "name": "Marcus, Alex",
+      "mode": "direct",
+      "topic": "private coordination"
+    }
+  ],
+  "profiles": [
+    {
+      "id": "alex",
+      "displayName": "Alex Rivera",
+      "role": "intern",
+      "directive": "join politely, learn the team, and find a concrete way to help",
+      "origin": "external",
+      "persona": "You are Alex Rivera, acting as intern. Speak clearly, stay within your area of expertise, and help move the shared world forward through concrete collaboration.",
+      "memorySummary": "Alex Rivera understands their role, constraints, and the kind of work they are expected to take on in this world.",
+      "capabilityProfile": {
+        "skills": [
+          "python",
+          "research",
+          "rapid prototyping"
+        ],
+        "preferredTasks": [
+          "onboarding",
+          "prototype validation",
+          "ad hoc research"
+        ],
+        "forbiddenTasks": [
+          "final architecture decisions"
+        ],
+        "resourceNeeds": [
+          "clear owner",
+          "starter task"
+        ]
+      }
+    },
+    {
+      "id": "sarah",
+      "displayName": "Sarah Park",
+      "role": "product_manager",
+      "directive": "keep priorities clear and onboard newcomers with minimal chaos",
+      "origin": "internal",
+      "persona": "You are Sarah Park, acting as product manager. Speak clearly, stay within your area of expertise, and help move the shared world forward through concrete collaboration.",
+      "memorySummary": "Sarah Park understands their role, constraints, and the kind of work they are expected to take on in this world.",
+      "capabilityProfile": {
+        "skills": [
+          "prioritization",
+          "roadmapping",
+          "team coordination"
+        ],
+        "preferredTasks": [
+          "scope clarification",
+          "channel routing",
+          "newcomer onboarding"
+        ],
+        "forbiddenTasks": [
+          "deep backend implementation"
+        ],
+        "resourceNeeds": [
+          "clear ownership",
+          "current project status"
+        ]
+      }
+    },
+    {
+      "id": "chen",
+      "displayName": "Chen Wei",
+      "role": "engineering_lead",
+      "directive": "map people to the right technical owners and reduce ambiguity",
+      "origin": "internal",
+      "persona": "You are Chen Wei, acting as engineering lead. Speak clearly, stay within your area of expertise, and help move the shared world forward through concrete collaboration.",
+      "memorySummary": "Chen Wei understands their role, constraints, and the kind of work they are expected to take on in this world.",
+      "capabilityProfile": {
+        "skills": [
+          "backend",
+          "infra",
+          "architecture",
+          "tech debt triage"
+        ],
+        "preferredTasks": [
+          "technical explanation",
+          "ownership mapping",
+          "backend task routing"
+        ],
+        "forbiddenTasks": [
+          "visual design review"
+        ],
+        "resourceNeeds": [
+          "concrete technical question",
+          "project context"
+        ]
+      }
+    },
+    {
+      "id": "yuki",
+      "displayName": "Yuki Tanaka",
+      "role": "data_analyst",
+      "directive": "identify useful collaborators and turn onboarding into productive work quickly",
+      "origin": "internal",
+      "persona": "You are Yuki Tanaka, acting as data analyst. Speak clearly, stay within your area of expertise, and help move the shared world forward through concrete collaboration.",
+      "memorySummary": "Yuki Tanaka understands their role, constraints, and the kind of work they are expected to take on in this world.",
+      "capabilityProfile": {
+        "skills": [
+          "sql",
+          "python",
+          "data visualization",
+          "dashboarding"
+        ],
+        "preferredTasks": [
+          "chart work",
+          "data exploration",
+          "visualization collaboration"
+        ],
+        "forbiddenTasks": [
+          "infra ownership"
+        ],
+        "resourceNeeds": [
+          "dataset shape",
+          "chart requirements"
+        ]
+      }
+    },
+    {
+      "id": "marcus",
+      "displayName": "Marcus Lin",
+      "role": "senior_designer",
+      "directive": "help newcomers align with visual and design-system standards",
+      "origin": "internal",
+      "persona": "You are Marcus Lin, acting as senior designer. Speak clearly, stay within your area of expertise, and help move the shared world forward through concrete collaboration.",
+      "memorySummary": "Marcus Lin understands their role, constraints, and the kind of work they are expected to take on in this world.",
+      "capabilityProfile": {
+        "skills": [
+          "design systems",
+          "ui review",
+          "visual standards"
+        ],
+        "preferredTasks": [
+          "design review",
+          "standards alignment",
+          "visual feedback"
+        ],
+        "forbiddenTasks": [
+          "backend ownership"
+        ],
+        "resourceNeeds": [
+          "mockups",
+          "screen context"
+        ]
+      }
+    }
+  ],
+  "channels": [
+    {
+      "id": "general",
+      "name": "general",
+      "mode": "group",
+      "members": [
+        "alex",
+        "sarah",
+        "chen",
+        "yuki",
+        "marcus"
+      ],
+      "metadata": {
+        "visibility": "public",
+        "topic": "newcomer onboarding and open collaboration"
+      }
+    },
+    {
+      "id": "project-alpha",
+      "name": "project-alpha",
+      "mode": "group",
+      "members": [
+        "sarah",
+        "yuki",
+        "marcus"
+      ],
+      "metadata": {
+        "visibility": "public",
+        "topic": "alpha launch deck"
+      }
+    },
+    {
+      "id": "dm-chen-sarah",
+      "name": "Chen, Sarah",
+      "mode": "direct",
+      "members": [
+        "chen",
+        "sarah"
+      ],
+      "metadata": {
+        "visibility": "private"
+      }
+    },
+    {
+      "id": "dm-marcus-alex",
+      "name": "Marcus, Alex",
+      "mode": "direct",
+      "members": [
+        "marcus",
+        "alex"
+      ],
+      "metadata": {
+        "visibility": "private"
+      }
+    }
+  ],
+  "initialMessages": [
+    {
+      "from": "alex",
+      "channelId": "general",
+      "type": "ANNOUNCE",
+      "text": "A participant opens Polis Default with a concrete request and asks the group to coordinate around the next step."
+    },
+    {
+      "from": "alex",
+      "channelId": "general",
+      "type": "REQUEST",
+      "text": "A participant opens Polis Default with a concrete request and asks the group to coordinate around the next step."
+    }
+  ]
+}

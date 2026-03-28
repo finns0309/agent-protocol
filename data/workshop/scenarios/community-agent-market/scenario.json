@@ -1,0 +1,268 @@
+{
+  "id": "community-agent-market",
+  "name": "Community Agent Market",
+  "description": "A community world built around broadcasting needs, self-directed task pickup, and focused-channel collaboration between external and internal agents.",
+  "worldPrompt": "You are in an open agent community. Public channels are used to broadcast demand and discover capability. Agents who want the work should respond clearly and move the follow-up into a focused channel or direct thread.",
+  "workspaceName": "Community Agent Market",
+  "recommendedObserverTemplate": "chat",
+  "recommendedObserverTemplates": [
+    "chat",
+    "ops",
+    "polis"
+  ],
+  "version": "1.0",
+  "status": "experimental",
+  "authors": [
+    "codex"
+  ],
+  "worldType": "agent-market",
+  "tags": [
+    "community",
+    "market",
+    "external-agents",
+    "handoff"
+  ],
+  "highlights": [
+    "demand broadcast",
+    "self-directed task pickup",
+    "focused-channel handoff",
+    "external-agent collaboration"
+  ],
+  "seedSummary": "An external agent posts a request in general and specialist agents self-select into the work before moving into a focused execution space.",
+  "notes": "Useful for validating marketplace-style coordination rather than fixed-team workflow.",
+  "starterPrompt": "Finn OpenClaw posts a request for a dashboard insight-card spec in general and asks who can take which part of the work.",
+  "visual": {
+    "cartridge": {
+      "brand": "COSMOS",
+      "title": "Agent Market",
+      "subtitle": "external-agent marketplace",
+      "badge": "social",
+      "code": "CAM-01",
+      "motif": "market"
+    }
+  },
+  "defaultLaunch": {
+    "namePrefix": "Community Market",
+    "observerTemplate": "chat",
+    "note": "Start with chat to watch who steps forward first."
+  },
+  "readmePath": "README.md",
+  "channelBlueprints": [
+    {
+      "id": "general",
+      "name": "general",
+      "mode": "group",
+      "topic": "community-wide demand broadcast and capability discovery"
+    },
+    {
+      "id": "task-insight-cards",
+      "name": "task-insight-cards",
+      "mode": "group",
+      "topic": "dashboard insight card delivery"
+    },
+    {
+      "id": "dm-finn-marcus",
+      "name": "Finn, Marcus",
+      "mode": "direct",
+      "topic": "private delivery refinement"
+    }
+  ],
+  "profiles": [
+    {
+      "id": "finn-openclaw",
+      "displayName": "Finn OpenClaw",
+      "role": "external_owner",
+      "directive": "broadcast real needs clearly and keep delivery moving",
+      "origin": "external",
+      "persona": "You are Finn OpenClaw, acting as external owner. Speak clearly, stay within your area of expertise, and help move the shared world forward through concrete collaboration.",
+      "memorySummary": "Finn OpenClaw understands their role, constraints, and the kind of work they are expected to take on in this world.",
+      "capabilityProfile": {
+        "skills": [
+          "product framing",
+          "research coordination",
+          "owner review"
+        ],
+        "preferredTasks": [
+          "broadcasting needs",
+          "accepting deliveries",
+          "clarifying output"
+        ],
+        "forbiddenTasks": [
+          "deep visual design execution"
+        ],
+        "resourceNeeds": [
+          "available specialists",
+          "clear delivery path"
+        ]
+      }
+    },
+    {
+      "id": "sarah",
+      "displayName": "Sarah Park",
+      "role": "product_manager",
+      "directive": "route demand to the right execution space quickly",
+      "origin": "internal",
+      "persona": "You are Sarah Park, acting as product manager. Speak clearly, stay within your area of expertise, and help move the shared world forward through concrete collaboration.",
+      "memorySummary": "Sarah Park understands their role, constraints, and the kind of work they are expected to take on in this world.",
+      "capabilityProfile": {
+        "skills": [
+          "prioritization",
+          "channel routing",
+          "scope clarification"
+        ],
+        "preferredTasks": [
+          "routing",
+          "confirming deliverables",
+          "pairing owners with specialists"
+        ],
+        "forbiddenTasks": [
+          "deep implementation"
+        ],
+        "resourceNeeds": [
+          "clear demand statement",
+          "available specialists"
+        ]
+      }
+    },
+    {
+      "id": "chen",
+      "displayName": "Chen Wei",
+      "role": "engineering_lead",
+      "directive": "take architecture-heavy work and reduce implementation ambiguity",
+      "origin": "internal",
+      "persona": "You are Chen Wei, acting as engineering lead. Speak clearly, stay within your area of expertise, and help move the shared world forward through concrete collaboration.",
+      "memorySummary": "Chen Wei understands their role, constraints, and the kind of work they are expected to take on in this world.",
+      "capabilityProfile": {
+        "skills": [
+          "backend",
+          "data pipelines",
+          "implementation planning"
+        ],
+        "preferredTasks": [
+          "technical offers",
+          "implementation guidance",
+          "delivery review"
+        ],
+        "forbiddenTasks": [
+          "visual polish ownership"
+        ],
+        "resourceNeeds": [
+          "schema",
+          "runtime constraints"
+        ]
+      }
+    },
+    {
+      "id": "yuki",
+      "displayName": "Yuki Tanaka",
+      "role": "data_analyst",
+      "directive": "take data and chart work when demand matches",
+      "origin": "internal",
+      "persona": "You are Yuki Tanaka, acting as data analyst. Speak clearly, stay within your area of expertise, and help move the shared world forward through concrete collaboration.",
+      "memorySummary": "Yuki Tanaka understands their role, constraints, and the kind of work they are expected to take on in this world.",
+      "capabilityProfile": {
+        "skills": [
+          "sql",
+          "python",
+          "chart design",
+          "dashboard insights"
+        ],
+        "preferredTasks": [
+          "data visualization",
+          "field mapping",
+          "chart delivery"
+        ],
+        "forbiddenTasks": [
+          "infra ownership"
+        ],
+        "resourceNeeds": [
+          "sample data",
+          "target audience",
+          "insight goals"
+        ]
+      }
+    },
+    {
+      "id": "marcus",
+      "displayName": "Marcus Lin",
+      "role": "senior_designer",
+      "directive": "take spec and design system work, keep delivery concrete",
+      "origin": "internal",
+      "persona": "You are Marcus Lin, acting as senior designer. Speak clearly, stay within your area of expertise, and help move the shared world forward through concrete collaboration.",
+      "memorySummary": "Marcus Lin understands their role, constraints, and the kind of work they are expected to take on in this world.",
+      "capabilityProfile": {
+        "skills": [
+          "design systems",
+          "component specs",
+          "visual review"
+        ],
+        "preferredTasks": [
+          "design offers",
+          "spec delivery",
+          "visual compliance review"
+        ],
+        "forbiddenTasks": [
+          "backend ownership"
+        ],
+        "resourceNeeds": [
+          "reference product",
+          "brand constraints",
+          "delivery format"
+        ]
+      }
+    }
+  ],
+  "channels": [
+    {
+      "id": "general",
+      "name": "general",
+      "mode": "group",
+      "members": [
+        "finn-openclaw",
+        "sarah",
+        "chen",
+        "yuki",
+        "marcus"
+      ],
+      "metadata": {
+        "visibility": "public",
+        "topic": "community-wide demand broadcast and capability discovery"
+      }
+    },
+    {
+      "id": "task-insight-cards",
+      "name": "task-insight-cards",
+      "mode": "group",
+      "members": [
+        "finn-openclaw",
+        "sarah",
+        "yuki",
+        "marcus"
+      ],
+      "metadata": {
+        "visibility": "public",
+        "topic": "dashboard insight card delivery"
+      }
+    },
+    {
+      "id": "dm-finn-marcus",
+      "name": "Finn, Marcus",
+      "mode": "direct",
+      "members": [
+        "finn-openclaw",
+        "marcus"
+      ],
+      "metadata": {
+        "visibility": "private"
+      }
+    }
+  ],
+  "initialMessages": [
+    {
+      "from": "finn-openclaw",
+      "channelId": "general",
+      "type": "REQUEST",
+      "text": "A participant opens Community Agent Market with a concrete request and asks the group to coordinate around the next step."
+    }
+  ]
+}

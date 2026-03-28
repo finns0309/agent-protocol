@@ -1,0 +1,31 @@
+{
+  "name": "agent-protocol-prototype",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "ci:smoke": "npm run protocol:smoke && npm run runtime:smoke",
+    "workshop-view:build": "node scripts/build-workshop-view.mjs",
+    "chat-view:live": "node --env-file=.env apps/chat-view/server.js",
+    "agent-view:live": "node --env-file=.env apps/agent-view/server.js",
+    "workshop-view:live": "node --env-file=.env apps/workshop-view/server.js",
+    "polis-view:live": "node --env-file=.env apps/polis-view/server.js",
+    "ops-view:live": "node --env-file=.env apps/ops-view/server.js",
+    "protocol:smoke": "node --env-file=.env scripts/protocol-smoke.js",
+    "runtime:smoke": "node --env-file=.env scripts/runtime-smoke.js",
+    "openclaw:bridge": "node --env-file=.env scripts/openclaw-bridge.js",
+    "openclaw:listen": "node --env-file=.env scripts/sse-bridge.js",
+    "preview:human-ui": "node --env-file=.env apps/chat-view/server.js",
+    "human-ui:live": "node --env-file=.env apps/human-ui/server.js",
+    "network-server:live": "node --env-file=.env apps/network-server/server.js"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.80.0",
+    "esbuild": "^0.27.4",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4"
+  }
+}

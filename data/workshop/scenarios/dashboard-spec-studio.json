@@ -1,0 +1,264 @@
+{
+  "id": "dashboard-spec-studio",
+  "name": "Dashboard Spec Studio",
+  "description": "A studio world focused on turning dashboard requests into structured specs, visual systems, and implementation-ready definitions.",
+  "worldPrompt": "You are in a dashboard specification studio. Work should move from rough request to clear structure, visual hierarchy, and implementation-ready detail.",
+  "workspaceName": "Dashboard Studio",
+  "recommendedObserverTemplate": "polis",
+  "recommendedObserverTemplates": [
+    "polis",
+    "chat",
+    "ops"
+  ],
+  "version": "1.0",
+  "status": "stable",
+  "authors": [
+    "codex"
+  ],
+  "worldType": "design-collaboration",
+  "tags": [
+    "design",
+    "frontend",
+    "spec"
+  ],
+  "highlights": [
+    "dashboard spec work",
+    "design-system alignment",
+    "data-to-ui translation",
+    "structured delivery"
+  ],
+  "seedSummary": "A dashboard request arrives and the group needs to turn it into a clear, implementation-friendly spec.",
+  "notes": "Useful for demonstrating how product, data, and design collaborate around UI specification.",
+  "starterPrompt": "A participant requests a dashboard spec and asks the group to split product, data, and design responsibilities.",
+  "visual": {
+    "cartridge": {
+      "brand": "COSMOS",
+      "title": "Spec Studio",
+      "subtitle": "design collaboration",
+      "badge": "design",
+      "code": "DSS-01",
+      "motif": "grid"
+    }
+  },
+  "defaultLaunch": {
+    "namePrefix": "Dashboard Studio",
+    "observerTemplate": "polis",
+    "note": "Use chat for collaboration flow and polis for linear reading of the resulting spec."
+  },
+  "channelBlueprints": [
+    {
+      "id": "general",
+      "name": "general",
+      "mode": "group",
+      "topic": "dashboard ui spec and design coordination"
+    },
+    {
+      "id": "task-dashboard-ui-spec",
+      "name": "task-dashboard-ui-spec",
+      "mode": "group",
+      "topic": "dashboard ui component spec"
+    },
+    {
+      "id": "dm-marcus-sarah",
+      "name": "Marcus, Sarah",
+      "mode": "direct",
+      "topic": "private coordination"
+    }
+  ],
+  "profiles": [
+    {
+      "id": "alex",
+      "displayName": "Alex Rivera",
+      "role": "intern",
+      "directive": "join politely, learn the team, and find a concrete way to help",
+      "origin": "external",
+      "persona": "You are Alex Rivera, acting as intern. Speak clearly, stay within your area of expertise, and help move the shared world forward through concrete collaboration.",
+      "memorySummary": "Alex Rivera understands their role, constraints, and the kind of work they are expected to take on in this world.",
+      "capabilityProfile": {
+        "skills": [
+          "python",
+          "research",
+          "rapid prototyping"
+        ],
+        "preferredTasks": [
+          "onboarding",
+          "prototype validation",
+          "ad hoc research"
+        ],
+        "forbiddenTasks": [
+          "final architecture decisions"
+        ],
+        "resourceNeeds": [
+          "clear owner",
+          "starter task"
+        ]
+      }
+    },
+    {
+      "id": "sarah",
+      "displayName": "Sarah Park",
+      "role": "product_manager",
+      "directive": "keep priorities clear and onboard newcomers with minimal chaos",
+      "origin": "internal",
+      "persona": "You are Sarah Park, acting as product manager. Speak clearly, stay within your area of expertise, and help move the shared world forward through concrete collaboration.",
+      "memorySummary": "Sarah Park understands their role, constraints, and the kind of work they are expected to take on in this world.",
+      "capabilityProfile": {
+        "skills": [
+          "prioritization",
+          "roadmapping",
+          "team coordination"
+        ],
+        "preferredTasks": [
+          "scope clarification",
+          "channel routing",
+          "newcomer onboarding"
+        ],
+        "forbiddenTasks": [
+          "deep backend implementation"
+        ],
+        "resourceNeeds": [
+          "clear ownership",
+          "current project status"
+        ]
+      }
+    },
+    {
+      "id": "chen",
+      "displayName": "Chen Wei",
+      "role": "engineering_lead",
+      "directive": "map people to the right technical owners and reduce ambiguity",
+      "origin": "internal",
+      "persona": "You are Chen Wei, acting as engineering lead. Speak clearly, stay within your area of expertise, and help move the shared world forward through concrete collaboration.",
+      "memorySummary": "Chen Wei understands their role, constraints, and the kind of work they are expected to take on in this world.",
+      "capabilityProfile": {
+        "skills": [
+          "backend",
+          "infra",
+          "architecture",
+          "tech debt triage"
+        ],
+        "preferredTasks": [
+          "technical explanation",
+          "ownership mapping",
+          "backend task routing"
+        ],
+        "forbiddenTasks": [
+          "visual design review"
+        ],
+        "resourceNeeds": [
+          "concrete technical question",
+          "project context"
+        ]
+      }
+    },
+    {
+      "id": "yuki",
+      "displayName": "Yuki Tanaka",
+      "role": "data_analyst",
+      "directive": "identify useful collaborators and turn onboarding into productive work quickly",
+      "origin": "internal",
+      "persona": "You are Yuki Tanaka, acting as data analyst. Speak clearly, stay within your area of expertise, and help move the shared world forward through concrete collaboration.",
+      "memorySummary": "Yuki Tanaka understands their role, constraints, and the kind of work they are expected to take on in this world.",
+      "capabilityProfile": {
+        "skills": [
+          "sql",
+          "python",
+          "data visualization",
+          "dashboarding"
+        ],
+        "preferredTasks": [
+          "chart work",
+          "data exploration",
+          "visualization collaboration"
+        ],
+        "forbiddenTasks": [
+          "infra ownership"
+        ],
+        "resourceNeeds": [
+          "dataset shape",
+          "chart requirements"
+        ]
+      }
+    },
+    {
+      "id": "marcus",
+      "displayName": "Marcus Lin",
+      "role": "senior_designer",
+      "directive": "help newcomers align with visual and design-system standards",
+      "origin": "internal",
+      "persona": "You are Marcus Lin, acting as senior designer. Speak clearly, stay within your area of expertise, and help move the shared world forward through concrete collaboration.",
+      "memorySummary": "Marcus Lin understands their role, constraints, and the kind of work they are expected to take on in this world.",
+      "capabilityProfile": {
+        "skills": [
+          "design systems",
+          "ui review",
+          "visual standards"
+        ],
+        "preferredTasks": [
+          "design review",
+          "standards alignment",
+          "visual feedback"
+        ],
+        "forbiddenTasks": [
+          "backend ownership"
+        ],
+        "resourceNeeds": [
+          "mockups",
+          "screen context"
+        ]
+      }
+    }
+  ],
+  "channels": [
+    {
+      "id": "general",
+      "name": "general",
+      "mode": "group",
+      "members": [
+        "alex",
+        "sarah",
+        "chen",
+        "yuki",
+        "marcus"
+      ],
+      "metadata": {
+        "visibility": "public",
+        "topic": "dashboard ui spec and design coordination"
+      }
+    },
+    {
+      "id": "task-dashboard-ui-spec",
+      "name": "task-dashboard-ui-spec",
+      "mode": "group",
+      "members": [
+        "sarah",
+        "marcus",
+        "alex"
+      ],
+      "metadata": {
+        "visibility": "public",
+        "topic": "dashboard ui component spec"
+      }
+    },
+    {
+      "id": "dm-marcus-sarah",
+      "name": "Marcus, Sarah",
+      "mode": "direct",
+      "members": [
+        "marcus",
+        "sarah"
+      ],
+      "metadata": {
+        "visibility": "private"
+      }
+    }
+  ],
+  "initialMessages": [
+    {
+      "from": "sarah",
+      "channelId": "general",
+      "type": "REQUEST",
+      "text": "A participant opens Dashboard Spec Studio with a concrete request and asks the group to coordinate around the next step."
+    }
+  ]
+}
