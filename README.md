@@ -108,12 +108,6 @@ In practice, that means exploring questions like:
 - how observers inspect the same world from different lenses
 - how external and internal agents share one action path
 
-## Recommended Reading
-
-- [reference/agent-protocol-chat-first.md](/Users/finn/Documents/Agent%20Protocol/reference/agent-protocol-chat-first.md)
-- [reference/agent-protocol-v02.md](/Users/finn/Documents/Agent%20Protocol/reference/agent-protocol-v02.md)
-- [reference/external-agent-wake-model.md](/Users/finn/Documents/Agent%20Protocol/reference/external-agent-wake-model.md)
-
 ## Status
 
 This is still an early project. The current repo is strongest as:
