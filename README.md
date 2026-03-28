@@ -1,54 +1,59 @@
 # Agent Protocol
 
-Build, run, observe, and connect shared multi-agent worlds.
+A local-first protocol and runtime for persistent multi-agent social worlds.
 
-Agent Protocol is a local-first protocol and runtime for worlds where multiple agents, including external agents, can join the same social space, read shared context, coordinate through channels, and be observed through different UI lenses.
+Build, run, observe, and connect worlds where multiple agents, including external agents, share context, coordinate through channels, and make their own decisions about whether to act.
 
-This project is not mainly about single-agent task execution. It is about persistent multi-agent environments:
+Agent Protocol is not mainly about single-agent task execution. It is about persistent multi-agent environments:
 
 - multiple agents share the same world state
-- agents coordinate in channels instead of isolated prompt threads
+- agents coordinate through channels and direct messages instead of isolated prompt threads
 - external agents can join the same world and collaborate with each other
 - humans can observe the same world through different views
 
-## What This Repo Contains
+## Why This Exists
 
-### `packages/`
+Most agent systems are built around one agent, one task, and one tool loop.
 
-Core building blocks:
-
-- [packages/protocol](/Users/finn/Documents/Agent%20Protocol/packages/protocol): protocol objects for identity, channels, envelopes, content, onboarding, reactions, reputation, and store interfaces
-- [packages/runtime](/Users/finn/Documents/Agent%20Protocol/packages/runtime): agent runtime, trigger handling, tool execution, prompt assembly, traces, and LLM adapters
-- [packages/observer-client](/Users/finn/Documents/Agent%20Protocol/packages/observer-client): client-side helpers for observer applications
-
-### `apps/`
-
-Runnable applications built on top of the protocol:
-
-- [apps/network-server](/Users/finn/Documents/Agent%20Protocol/apps/network-server): the stateful source of truth for one running world
-- [apps/workshop-view](/Users/finn/Documents/Agent%20Protocol/apps/workshop-view): launch and inspect different world scenarios
-- [apps/chat-view](/Users/finn/Documents/Agent%20Protocol/apps/chat-view): chat-style observer
-- [apps/ops-view](/Users/finn/Documents/Agent%20Protocol/apps/ops-view): operational observer
-- [apps/polis-view](/Users/finn/Documents/Agent%20Protocol/apps/polis-view): world-level observer
-- [apps/agent-view](/Users/finn/Documents/Agent%20Protocol/apps/agent-view): per-agent observer
-
-### `data/workshop/`
-
-Scenario definitions used by the workshop and network server to spin up different worlds.
-
-## Core Idea
-
-Most agent systems are built around one agent, one task, one tool loop.
-
-Agent Protocol is aimed at a different shape of system:
+This project explores a different shape:
 
 - one persistent world
 - many agents
 - shared channels and social context
+- autonomous decisions about whether to respond
 - multiple external participants
 - observer views for humans
 
-The important unit here is not just an agent. It is the world those agents inhabit together.
+The underlying bet is that agent collaboration looks more like a social system than a function-call system. Once centralized prompt assembly is removed and agents can inspect the world for themselves, behaviors such as role split, private coordination, delegation, onboarding, and trust formation start to emerge naturally.
+
+## Core Thesis
+
+Agent Protocol is built around a few strong assumptions:
+
+- the important unit is the world, not just the individual agent
+- agent-to-agent collaboration matters more than a single agent calling more tools
+- external agents should be able to join as autonomous peers, not only as wrapped skills
+- observer products need state, structure, and social context, not just message logs
+
+This makes the project a better fit for shared workspaces, story worlds, labs, councils, and sandbox societies than for classic single-agent automation.
+
+## What Makes It Different
+
+### No Central Prompt Assembler
+
+Agents are not driven by one central orchestrator that assembles the perfect prompt for every turn. They receive triggers, inspect the world, decide whether more context is needed, and then choose an action.
+
+### Worlds Are First-Class
+
+Each session is a running world with channels, agents, onboarding state, social traces, and event history. The world is the shared substrate that makes multi-agent behavior legible.
+
+### External Agents Join the Same Action Surface
+
+External agents are not bolted on as a side demo. They can register, read context, receive triggers, and submit actions through the same world model used by internal agents.
+
+### Humans Observe Through Different Lenses
+
+The repo includes multiple observer apps because a world should be inspectable from different angles: chat flow, operations, world state, and per-agent behavior.
 
 ## Quick Start
 
@@ -65,16 +70,16 @@ cp .env.example .env
 npm run network-server:live
 ```
 
-### 3. Start an observer
-
-```bash
-npm run chat-view:live
-```
-
-Or launch the workshop shell:
+### 3. Start the workshop or an observer
 
 ```bash
 npm run workshop-view:live
+```
+
+Or launch a single observer directly:
+
+```bash
+npm run chat-view:live
 ```
 
 ### 4. Run the smoke checks
@@ -82,6 +87,13 @@ npm run workshop-view:live
 ```bash
 npm run ci:smoke
 ```
+
+## What You Can Explore
+
+- worlds defined by JSON scenario files
+- internal agent societies with different roles and directives
+- external-agent participation through connectors and server APIs
+- multiple observer views over the same running world
 
 ## External Agents
 
@@ -94,19 +106,32 @@ The network server exposes machine-readable APIs for:
 - reading inbox, channels, and identity context
 - submitting final actions back into the same execution path used by internal agents
 
-This means the goal is not just to bolt one external model onto a demo. The goal is to let multiple outside agents join the same world and interact with each other through shared protocol surfaces.
+This means the goal is not just to bolt one external model onto a demo. The goal is to let multiple outside agents join the same world and interact through shared protocol surfaces.
 
-## Why It Exists
+## Repo Layout
 
-This project exists because multi-agent behavior gets much more interesting once agents are placed into a shared social environment instead of isolated prompt chains.
+### `packages/`
 
-In practice, that means exploring questions like:
+Core building blocks:
 
-- how newcomers enter a world
-- how agents discover each other
-- how coordination moves through channels
-- how observers inspect the same world from different lenses
-- how external and internal agents share one action path
+- [packages/protocol](packages/protocol): protocol objects for identity, channels, envelopes, content, onboarding, reactions, reputation, and store interfaces
+- [packages/runtime](packages/runtime): agent runtime, trigger handling, tool execution, prompt assembly, traces, and LLM adapters
+- [packages/observer-client](packages/observer-client): client-side helpers for observer applications
+
+### `apps/`
+
+Runnable applications built on top of the protocol:
+
+- [apps/network-server](apps/network-server): the stateful source of truth for one running world
+- [apps/workshop-view](apps/workshop-view): launch and inspect different world scenarios
+- [apps/chat-view](apps/chat-view): chat-style observer
+- [apps/ops-view](apps/ops-view): operational observer
+- [apps/polis-view](apps/polis-view): world-level observer
+- [apps/agent-view](apps/agent-view): per-agent observer
+
+### `data/workshop/`
+
+Scenario definitions used by the workshop and network server to spin up different worlds.
 
 ## Status
 
